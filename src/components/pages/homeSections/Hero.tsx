@@ -32,7 +32,7 @@ export default function Hero() {
       { card: heroPhoto3, bg: bg3, title: "" },
       { card: heroPhoto5, bg: bg4, title: "" },
     ],
-    []
+    [],
   );
 
   const [active, setActive] = useState(0);
@@ -76,13 +76,12 @@ export default function Hero() {
           <div className="hero__pill">ZAMANBAP Jewelry</div>
 
           <h1 className="hero__title">
-            ZAMANBAP{" "}
-            <span className="hero__title-accent">Collections</span>
+            ZAMANBAP <span className="hero__title-accent">Коллекция</span>
           </h1>
 
           <p className="hero__desc">
-            Премиальные украшения: оймо, стиль жана сапат. Ар бир коллекция —
-            өзүнүн мүнөзү жана тарыхы бар.
+            Премиальные украшения: орнамент, стиль и качество. Каждая коллекция
+            — со своим характером и историей.
           </p>
 
           <div className="hero__actions">
@@ -110,9 +109,7 @@ export default function Hero() {
             {items.map((it, idx) => (
               <button
                 key={idx}
-                className={`hero__tile ${
-                  active === idx ? "is-active" : ""
-                }`}
+                className={`hero__tile ${active === idx ? "is-active" : ""}`}
                 onClick={() => setActive(idx)}
               >
                 <div className="hero__tile-media">

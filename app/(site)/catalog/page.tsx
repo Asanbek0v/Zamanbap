@@ -1,4 +1,4 @@
-import CatalogPage from "@/components/page/CatalogPage";
+import CatalogPage from "@/components/main/CatalogPage";
 
 import type { Metadata } from "next";
 
