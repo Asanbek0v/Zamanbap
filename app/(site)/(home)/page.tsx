@@ -1,4 +1,5 @@
-import HomePage from "@/components/page/HomePage";
+import HomePage from "@/src/components/pages/HomePage";
+import React from "react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
