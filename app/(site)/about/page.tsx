@@ -1,4 +1,4 @@
-import AboutPage from "@/components/page/AboutPage";
+import AboutPage from "@/components/main/AboutPage";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
