@@ -1,8 +1,8 @@
 import React from "react";
-import AboutBrand from "./aboutBrand/AboutBrand";
-import Reviews from "./reviews/Reviews";
-import Faq from "./faq/Faq";
-import Process from "./process/Process";
+import AboutBrand from "./homeSections/AboutBrand";
+import Reviews from "./homeSections/Reviews";
+import Faq from "./homeSections/Faq";
+import Process from "./homeSections/Process";
 import Hero from "./homeSections/Hero";
 
 const HomePage = () => {
