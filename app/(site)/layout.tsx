@@ -1,4 +1,4 @@
-import LayoutSite from "@/components/layout/LayooutSite";
+import LayoutSite from "@/src/components/layout/LayooutSite";
 import React, { FC, ReactNode } from "react";
 
 interface ILayoutProps {
