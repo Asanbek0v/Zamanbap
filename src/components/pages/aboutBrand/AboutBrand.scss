@@ -1,0 +1,190 @@
+:root {
+  --dark: #0f1115;
+  --light: #f5f5f5;
+  --gold: #d4af37;
+}
+
+#AboutBrand {
+  padding: 110px 0;
+  background: var(--dark);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+  .AboutBrand {
+    text-align: center;
+    margin-bottom: 42px;
+
+    h2 {
+      color: var(--light);
+      font-size: 38px;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    p {
+      margin-top: 10px;
+      color: rgba(245, 245, 245, 0.55);
+      line-height: 1.6;
+    }
+  }
+  .About__card {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 28px;
+    position: relative;
+    z-index: 1;
+    &--text {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.02);
+      padding: 26px;
+      position: relative;
+      p:first-child {
+        color: rgba(245, 245, 245, 0.55);
+        letter-spacing: 3px;
+        font-size: 12px;
+      }
+      p:nth-of-type(2) {
+        margin-top: 12px;
+        color: rgba(245, 245, 245, 0.55);
+        line-height: 1.75;
+      }
+      h3 {
+        margin-top: 12px;
+        color: var(--light);
+        font-size: 30px;
+        font-weight: 500;
+        letter-spacing: 0.2px;
+      }
+      &__facts {
+        margin-top: 18px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        &--fact {
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: rgba(255, 255, 255, 0.02);
+          padding: 14px;
+          transition: 0.35s;
+          h6 {
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 0.4px;
+          }
+          span {
+            display: block;
+            margin-top: 6px;
+            color: rgba(245, 245, 245, 0.55);
+            font-size: 12px;
+          }
+        }
+        &--fact:hover {
+          border-color: rgba(212, 175, 55, 0.35);
+          transform: translateY(-2px);
+        }
+      }
+      &__actions {
+        margin-top: 18px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        .btn {
+          padding: 12px 22px;
+          background: var(--gold);
+          color: var(--dark);
+          text-decoration: none;
+          font-weight: 600;
+          letter-spacing: 0.4px;
+          position: relative;
+          overflow: hidden;
+        }
+        .btn::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            120deg,
+            transparent,
+            rgba(245, 245, 245, 0.45),
+            transparent
+          );
+          opacity: 0;
+          transition: 0.35s;
+        }
+        .btn:hover::after {
+          opacity: 1;
+        }
+        .btn2 {
+          padding: 12px 22px;
+          border: 1px solid rgba(255, 255, 255, 0.16);
+          color: var(--light);
+          text-decoration: none;
+          background: transparent;
+          transition: 0.25s;
+        }
+
+        .btn2:hover {
+          border-color: var(--gold);
+          color: var(--gold);
+        }
+      }
+    }
+    &--cards {
+      display: grid;
+      gap: 14px;
+      &__block {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.02);
+        padding: 18px;
+        transition: 0.35s;
+        h6 {
+          color: var(--light);
+          font-weight: 500;
+          letter-spacing: 0.3px;
+        }
+        p {
+          margin-top: 10px;
+          color: rgba(245, 245, 245, 0.55);
+          line-height: 1.7;
+        }
+      }
+      &__block:hover {
+        border-color: rgba(212, 175, 55, 0.35);
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+#AboutBrand::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(212, 175, 55, 0.08),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(212, 175, 55, 0.05),
+      transparent 60%
+    );
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .About__card {
+    grid-template-columns: 1fr;
+  }
+
+  .About__card--text__facts {
+    grid-template-columns: 1fr;
+  }
+
+  .AboutBrand h2 {
+    font-size: 32px;
+  }
+}

@@ -1,0 +1,169 @@
+#ProcessVideo {
+  padding: 100px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+/* soft gold glow */
+#ProcessVideo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 25% 20%,
+      rgba(212, 175, 55, 0.06),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 75% 80%,
+      rgba(212, 175, 55, 0.05),
+      transparent 60%
+    );
+  pointer-events: none;
+}
+
+/* title */
+.PV__head {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+
+  h2 {
+    color: var(--light);
+    font-size: 34px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+  }
+
+  p {
+    margin-top: 8px;
+    color: rgba(245, 245, 245, 0.55);
+  }
+}
+
+.PV__wrap {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 18px;
+  align-items: stretch;
+  position: relative;
+  z-index: 1;
+}
+
+/* ✅ VIDEO BOX (fix: чоң болуп кетпейт) */
+.PV__video {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+  position: relative;
+
+  /* 🔥 негизги fix */
+  aspect-ratio: 16 / 10; /* пропорция */
+  max-height: 420px; /* өтө чоң болуп кетпейт */
+  width: 100%;
+}
+
+/* video */
+.PV__video video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* cinematic overlay */
+.PV__video::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 17, 21, 0.35), transparent);
+  pointer-events: none;
+}
+
+/* right info */
+.PV__info {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.PV__num {
+  color: var(--gold);
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+
+.PV__info h3 {
+  margin-top: 10px;
+  color: var(--light);
+  font-weight: 400;
+  font-size: 26px;
+}
+
+.PV__info p {
+  margin-top: 10px;
+  color: rgba(245, 245, 245, 0.6);
+  line-height: 1.7;
+}
+
+.PV__controls {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.PV__controls button {
+  width: 42px;
+  height: 42px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--light);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.PV__controls button:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.PV__dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.PV__dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(245, 245, 245, 0.18);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.PV__dots span.active {
+  background: var(--gold);
+}
+
+/* ✅ responsive */
+@media (max-width: 900px) {
+  .PV__wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .PV__video {
+    aspect-ratio: 4 / 3;
+    max-height: 260px;
+  }
+}
