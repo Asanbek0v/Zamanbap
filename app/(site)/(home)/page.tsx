@@ -1,6 +1,5 @@
-import HomePage from "@/src/components/pages/HomePage";
-import React from "react";
 import type { Metadata } from "next";
+import HomePage from "@/components/pages/HomePage";
 
 export const metadata: Metadata = {
   title: "Главная",

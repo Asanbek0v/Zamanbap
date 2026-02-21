@@ -1,4 +1,3 @@
-import React from "react";
 import AboutBrand from "./aboutBrand/AboutBrand";
 import Reviews from "./reviews/Reviews";
 import Faq from "./faq/Faq";
