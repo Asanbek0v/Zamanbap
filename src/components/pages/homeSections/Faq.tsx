@@ -35,23 +35,42 @@ const Faq: FC = () => {
   return (
     <section id="Faq">
       <div className="container">
-        <div className="Faq">
+        {/* HEADER */}
+        <div
+          className="Faq"
+          data-aos="zoom-in"
+          data-aos-duration="900"
+          data-aos-once="true"
+        >
           <h2>Часто задаваемые вопросы</h2>
           <p>Информация, которую стоит знать перед оформлением заказа</p>
         </div>
 
+        {/* LIST */}
         <div className="Faq__list">
           {data.map((el, index) => (
-            <div key={index} className="Faq__list--card">
+            <div
+              key={index}
+              className="Faq__list--card"
+              data-aos="zoom-in"
+              data-aos-delay={150 + index * 120}
+              data-aos-duration="900"
+              data-aos-once="true"
+            >
               <div
                 className="Faq__list--card__block"
                 onClick={() => toggle(index)}
               >
                 <h4>{el.title}</h4>
-                <span>{open === index ? <FiMinus /> : <FiPlus />}</span>
+                <span>
+                  {open === index ? <FiMinus /> : <FiPlus />}
+                </span>
               </div>
+
               <div
-                className={`accordion__body ${open === index ? "show" : ""}`}
+                className={`accordion__body ${
+                  open === index ? "show" : ""
+                }`}
               >
                 <p>{el.content}</p>
               </div>

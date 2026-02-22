@@ -45,12 +45,8 @@ export default function Hero() {
   }, [items.length]);
 
   return (
-    <section
-      id="hero"
-      className="hero"
-      aria-label="Главный блок"
-      data-active={active}
-    >
+    <section id="hero" className="hero" aria-label="Главный блок">
+      {/* BG */}
       <div className="hero__bg">
         {items.map((it, idx) => (
           <div
@@ -72,19 +68,20 @@ export default function Hero() {
       </div>
 
       <div className="container hero__layout">
-        <header className="hero__left">
-          <div className="hero__pill">ZAMANBAP Jewelry</div>
+        {/* LEFT */}
+        <header className="hero__left heroPop heroPop--1">
+          <div className="hero__pill heroPop heroPop--2">ZAMANBAP Jewelry</div>
 
-          <h1 className="hero__title">
+          <h1 className="hero__title heroPop heroPop--3">
             ZAMANBAP <span className="hero__title-accent">Коллекция</span>
           </h1>
 
-          <p className="hero__desc">
+          <p className="hero__desc heroPop heroPop--4">
             Премиальные украшения: орнамент, стиль и качество. Каждая коллекция
             — со своим характером и историей.
           </p>
 
-          <div className="hero__actions">
+          <div className="hero__actions heroPop heroPop--5">
             <Link className="hero__btn hero__btn--gold" href="/catalog">
               Каталог <span aria-hidden="true">›</span>
             </Link>
@@ -94,13 +91,15 @@ export default function Hero() {
           </div>
         </header>
 
-        <div className="hero__right">
-          <div className="hero__dots">
+        {/* RIGHT */}
+        <div className="hero__right heroPop heroPop--2">
+          <div className="hero__dots heroPop heroPop--3">
             {items.map((_, i) => (
               <button
                 key={i}
                 className={`hero__dot ${active === i ? "is-active" : ""}`}
                 onClick={() => setActive(i)}
+                aria-label={`Слайд ${i + 1}`}
               />
             ))}
           </div>
@@ -109,13 +108,17 @@ export default function Hero() {
             {items.map((it, idx) => (
               <button
                 key={idx}
-                className={`hero__tile ${active === idx ? "is-active" : ""}`}
+                className={`hero__tile heroPop heroPop--tile ${
+                  active === idx ? "is-active" : ""
+                }`}
+                style={{ animationDelay: `${180 + idx * 120}ms` }}
                 onClick={() => setActive(idx)}
+                aria-label={`Карточка ${idx + 1}`}
               >
                 <div className="hero__tile-media">
                   <Image
                     src={it.card}
-                    alt={it.title}
+                    alt={it.title || `card-${idx + 1}`}
                     fill
                     sizes="(max-width: 900px) 44vw, 260px"
                     quality={90}
