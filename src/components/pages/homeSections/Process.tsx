@@ -39,6 +39,7 @@ const ProcessVideo: FC = () => {
     ],
     [],
   );
+
   const [i, setI] = useState(0);
 
   const next = () => setI((p) => (p + 1) % steps.length);
@@ -54,13 +55,32 @@ const ProcessVideo: FC = () => {
   return (
     <section id="ProcessVideo">
       <div className="container">
-        <div className="PV__head">
+        {/* HEAD */}
+        <div
+          className="PV__head"
+          data-aos="zoom-in"
+          data-aos-duration="900"
+          data-aos-once="true"
+        >
           <h2>Наш процесс</h2>
           <p>Коротко и наглядно: как мы создаём браслеты</p>
         </div>
 
-        <div className="PV__wrap">
-          <div className="PV__video">
+        {/* WRAP */}
+        <div
+          className="PV__wrap"
+          data-aos="zoom-in-up"
+          data-aos-duration="1000"
+          data-aos-once="true"
+        >
+          {/* VIDEO */}
+          <div
+            className="PV__video"
+            data-aos="zoom-in-right"
+            data-aos-duration="900"
+            data-aos-delay="120"
+            data-aos-once="true"
+          >
             <video
               key={step.video}
               src={step.video}
@@ -71,13 +91,48 @@ const ProcessVideo: FC = () => {
             />
           </div>
 
-          <div className="PV__info">
-            <span className="PV__num">{step.id}</span>
-            <h3>{step.title}</h3>
-            <p>{step.text}</p>
+          {/* INFO */}
+          <div
+            className="PV__info"
+            data-aos="zoom-in-left"
+            data-aos-duration="900"
+            data-aos-delay="160"
+            data-aos-once="true"
+          >
+            <span
+              className="PV__num"
+              data-aos="zoom-in"
+              data-aos-delay="220"
+              data-aos-duration="800"
+            >
+              {step.id}
+            </span>
 
-            <div className="PV__controls">
-              <button onClick={prev}>←</button>
+            <h3
+              data-aos="zoom-in"
+              data-aos-delay="300"
+              data-aos-duration="800"
+            >
+              {step.title}
+            </h3>
+
+            <p
+              data-aos="zoom-in"
+              data-aos-delay="380"
+              data-aos-duration="800"
+            >
+              {step.text}
+            </p>
+
+            <div
+              className="PV__controls"
+              data-aos="zoom-in-up"
+              data-aos-delay="460"
+              data-aos-duration="800"
+            >
+              <button onClick={prev} aria-label="Назад">
+                ←
+              </button>
 
               <div className="PV__dots">
                 {steps.map((_, idx) => (
@@ -85,11 +140,18 @@ const ProcessVideo: FC = () => {
                     key={idx}
                     className={idx === i ? "active" : ""}
                     onClick={() => setI(idx)}
+                    // доттор да жумшак анимация менен
+                    data-aos="zoom-in"
+                    data-aos-delay={520 + idx * 90}
+                    data-aos-duration="650"
+                    data-aos-once="true"
                   />
                 ))}
               </div>
 
-              <button onClick={next}>→</button>
+              <button onClick={next} aria-label="Вперёд">
+                →
+              </button>
             </div>
           </div>
         </div>
