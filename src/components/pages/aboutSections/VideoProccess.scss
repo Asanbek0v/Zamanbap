@@ -1,0 +1,76 @@
+#video {
+  padding: 120px 0;
+  background: #0f1115;
+
+  .video {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+
+    @media (max-width: 900px) {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    &__content {
+      max-width: 550px;
+
+      h2 {
+        font-size: 39px;
+        margin-bottom: 20px;
+        background: linear-gradient(
+          135deg,
+          rgba(212, 175, 55, 1) 0%,
+          rgba(255, 227, 141, 0.95) 50%,
+          rgba(212, 175, 55, 1) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      p {
+        color: #ccc;
+        line-height: 1.6;
+        font-size: 20px;
+      }
+    }
+
+    &__card {
+      position: relative;
+      width: 360px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #000;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+
+      video {
+        width: 100%;
+        aspect-ratio: 9 / 16;
+        object-fit: cover;
+        display: block;
+      }
+
+      .playButton {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.9);
+        font-size: 28px;
+        display: grid;
+        place-items: center;
+        transition: 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}
