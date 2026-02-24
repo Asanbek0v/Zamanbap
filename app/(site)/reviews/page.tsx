@@ -1,4 +1,4 @@
-import ReviewsPage from "@/components/page/ReviewsPage";
+import ReviewsPage from "@/components/pages/ReviewsPage";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
