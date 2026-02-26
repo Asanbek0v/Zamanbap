@@ -13,8 +13,8 @@ const Header: FC = () => {
           <nav>
             <Link href="/">Главная</Link>
             <Link href="/catalog">Каталог</Link>
-            <Link href="/about">О бренде</Link>
-            <Link href="/blog">Блог</Link>
+            <Link href="/about">О нас</Link>
+            <Link href="/blog">Журнал</Link>
             <Link href="/reviews">Отзывы</Link>
             <Link href="/contact">Контакты</Link>
           </nav>
