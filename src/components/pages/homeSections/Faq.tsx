@@ -58,7 +58,7 @@ const Faq: FC = () => {
               data-aos-once="true"
             >
               <div
-                className="Faq__list--card__block"
+                className="Faq__list--card__block" 
                 onClick={() => toggle(index)}
               >
                 <h4>{el.title}</h4>

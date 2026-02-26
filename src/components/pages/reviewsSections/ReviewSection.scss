@@ -1,0 +1,413 @@
+:root {
+  --dark: #0f1115;
+  --light: #f5f5f5;
+  --gold: #d4af37;
+}
+
+#Reviews {
+  padding: 70px 0 90px;
+  background: var(--dark);
+
+  .Reviews {
+    margin-top: 40px;
+    margin-bottom: 55px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+
+    span {
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 2px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      color: var(--light);
+      font-size: 44px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      line-height: 1.05;
+    }
+
+    h3 {
+      color: var(--light);
+      font-size: 14px;
+      line-height: 24px;
+      font-weight: 300;
+      letter-spacing: 1.3px;
+      opacity: 0.35;
+      text-align: center;
+      max-width: 720px;
+    }
+
+    &__linet {
+      width: min(950px, 100%);
+      height: 1px;
+      background: rgba(245, 245, 245, 0.12);
+    }
+
+    &__list {
+      display: flex;
+      align-items: center;
+      gap: clamp(18px, 4vw, 48px);
+
+      h4 {
+        padding: 22px 0;
+        font-size: 30px;
+        color: var(--gold);
+        letter-spacing: 0.8px;
+        line-height: 22px;
+        text-align: center;
+
+        span {
+          display: block;
+          margin-top: 10px;
+          color: var(--light);
+          font-size: 13px;
+          opacity: 0.3;
+          letter-spacing: 1.2px;
+        }
+      }
+    }
+  }
+
+  .Review {
+    position: relative;
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 110px 22px;
+    text-align: center;
+    color: var(--light);
+
+    border: 1px solid rgba(245, 245, 245, 0.1);
+    border-radius: 18px;
+
+    // 1 гана жеңил "lux" эффект
+    background: linear-gradient(
+      180deg,
+      rgba(245, 245, 245, 0.04),
+      rgba(245, 245, 245, 0.01)
+    );
+
+    span {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--dark);
+      font-size: 11px;
+      letter-spacing: 5px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+
+    div {
+      color: var(--gold);
+      font-size: 20px;
+      margin-bottom: 26px;
+      letter-spacing: 4px;
+    }
+
+    p {
+      font-size: clamp(20px, 2vw, 28px);
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 32px;
+      opacity: 0.92;
+
+      &:last-child {
+        font-size: 13px;
+        letter-spacing: 3px;
+        font-style: normal;
+        color: var(--gold);
+        opacity: 0.95;
+      }
+    }
+  }
+
+  .ReviewsGrid {
+    margin-top: 44px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+
+    &__Card {
+      border-radius: 18px;
+      padding: 38px 34px;
+      min-height: 330px;
+
+      background: rgba(245, 245, 245, 0.03);
+      border: 1px solid rgba(245, 245, 245, 0.1);
+
+      transition: 0.3s ease;
+
+      &:hover {
+        transform: translateY(-6px);
+        border-color: rgba(212, 175, 55, 0.35);
+      }
+
+      &--stars {
+        color: var(--gold);
+        font-size: 14px;
+        letter-spacing: 3px;
+        margin-bottom: 18px;
+      }
+
+      &--text {
+        color: var(--light);
+        font-size: 19px;
+        line-height: 1.55;
+        font-style: italic;
+        margin-bottom: 34px;
+        opacity: 0.9;
+      }
+
+   
+
+      &--bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+
+        &__user {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          min-width: 0;
+
+          &__avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: var(--dark);
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+            font-size: 18px;
+          }
+
+          &__info {
+            min-width: 0;
+
+            h4 {
+              color: var(--light);
+              font-size: 13px;
+              letter-spacing: 2.2px;
+              margin: 0 0 6px;
+              text-transform: uppercase;
+
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              max-width: 220px;
+            }
+
+            span {
+              color: var(--gold);
+              font-size: 12px;
+              letter-spacing: 1.2px;
+              display: block;
+
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              max-width: 220px;
+            }
+          }
+        }
+
+        &__date {
+          color: var(--light);
+          font-size: 12px;
+          opacity: 0.3;
+          letter-spacing: 1px;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  .ReviewForm {
+    margin-top: 95px;
+    padding: 95px 0 10px;
+    text-align: center;
+    border-top: 1px solid var(--gold);
+
+    p {
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 6px;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      color: var(--light);
+      font-size: clamp(44px, 5vw, 66px);
+      font-weight: 500;
+      line-height: 1.05;
+      margin-bottom: 10px;
+      font-family: serif;
+    }
+
+    h3 {
+      color: var(--light);
+      opacity: 0.3;
+      font-size: 16px;
+      margin-bottom: 56px;
+      letter-spacing: 1.2px;
+    }
+
+    &__form {
+      max-width: 820px;
+      margin: 0 auto;
+      text-align: left;
+
+      &--grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px 70px;
+
+        &__field,
+        &__full {
+          span {
+            display: block;
+            color: var(--gold);
+            font-size: 11px;
+            letter-spacing: 5px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+          }
+
+          input,
+          textarea {
+            width: 100%;
+            background: transparent;
+            border: 0;
+            border-bottom: 1px solid rgba(245, 245, 245, 0.25);
+            padding: 14px 0;
+            color: var(--light);
+            outline: none;
+            font-size: 14px;
+            transition: 0.2s;
+          }
+
+          input:focus,
+          textarea:focus {
+            border-bottom-color: var(--gold);
+          }
+
+          textarea {
+            min-height: 100px;
+            padding-top: 10px;
+            resize: vertical;
+          }
+
+          input::placeholder,
+          textarea::placeholder {
+            color: var(--light);
+            opacity: 0.3;
+          }
+        }
+
+        &__full {
+          grid-column: 1 / -1;
+
+          &--stars {
+            display: flex;
+            gap: 10px;
+            padding: 6px 0 14px;
+
+            button {
+              background: transparent;
+              border: 1px solid rgba(245, 245, 245, 0.12);
+              border-radius: 12px;
+              font-size: 20px;
+              color: var(--light);
+              width: 44px;
+              height: 42px;
+              cursor: pointer;
+              transition: 0.2s;
+
+              &:hover {
+                color: var(--gold);
+                border-color: rgba(212, 175, 55, 0.6);
+              }
+            }
+          }
+        }
+      }
+
+      &--bottom {
+        margin-top: 56px;
+        padding-top: 36px;
+        border-top: 1px solid rgba(245, 245, 245, 0.12);
+        display: flex;
+        justify-content: center;
+
+        button {
+          background: transparent;
+          border: 1px solid var(--gold);
+          color: var(--gold);
+          padding: 18px 58px;
+          letter-spacing: 6px;
+          font-size: 12px;
+          border-radius: 999px;
+          cursor: pointer;
+          transition: 0.3s;
+
+          &:hover {
+            background: var(--gold);
+            color: var(--dark);
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .ReviewsGrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 720px) {
+    padding: 50px 0 70px;
+
+    .Review {
+      padding: 85px 18px;
+    }
+
+    .ReviewsGrid {
+      grid-template-columns: 1fr;
+      gap: 18px;
+
+      &__Card {
+        padding: 30px 26px;
+        min-height: auto;
+      }
+    }
+
+    .ReviewForm {
+      padding: 70px 0 10px;
+
+      &__form {
+        &--grid {
+          grid-template-columns: 1fr;
+          gap: 22px;
+
+          &__full {
+            grid-column: auto;
+          }
+        }
+      }
+    }
+  }
+}
