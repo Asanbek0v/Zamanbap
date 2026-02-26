@@ -21,15 +21,28 @@ const Popular = () => {
     <section id="popular" style={{ backgroundImage: `url(${popularBg.src})` }}>
       <div className="container">
         <div className="popular">
-
-          <div className="popular__top">
+          {/* TOP */}
+          <div
+            className="popular__top"
+            data-aos="zoom-in"
+            data-aos-duration="900"
+            data-aos-once="true"
+          >
             <h2>Популярные браслеты</h2>
             <p>Самые востребованные модели этого сезона.</p>
           </div>
 
+          {/* GRID */}
           <div className="popular__grid">
             {items.map((el, idx) => (
-              <article className="popularCard" key={idx}>
+              <article
+                className="popularCard"
+                key={idx}
+                data-aos="zoom-in"
+                data-aos-delay={150 + idx * 120}
+                data-aos-duration="900"
+                data-aos-once="true"
+              >
                 <div className="popularCard__img">
                   <Image
                     src={el.img}
@@ -47,12 +60,18 @@ const Popular = () => {
             ))}
           </div>
 
-          <div className="popular__bottom">
+          {/* BOTTOM */}
+          <div
+            className="popular__bottom"
+            data-aos="zoom-in-up"
+            data-aos-delay="200"
+            data-aos-duration="900"
+            data-aos-once="true"
+          >
             <Link href="/catalog" className="popular__btn">
               Смотреть каталог
             </Link>
           </div>
-
         </div>
       </div>
     </section>

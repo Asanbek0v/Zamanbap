@@ -11,8 +11,7 @@
   box-sizing: border-box;
 }
 body {
-background: #0f1115;
-
+  background: #0f1115;
 }
 .container {
   max-width: 1240px;
@@ -20,7 +19,6 @@ background: #0f1115;
   margin: 0 auto;
   padding: 0 20px;
 }
-
 
 h1,
 h2,
@@ -30,6 +28,7 @@ Image,
 h3,
 h4,
 h5,
+span,
 h6 {
   cursor: pointer;
 }

@@ -1,4 +1,3 @@
-/* ================= HERO ================= */
 
 .hero {
   position: relative;
@@ -7,10 +6,8 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding-block: 70px;
 }
 
-/* ---------- Background ---------- */
 
 .hero__bg {
   position: absolute;
@@ -54,7 +51,6 @@
     );
 }
 
-/* ---------- Layout ---------- */
 
 .hero__layout {
   position: relative;
@@ -67,14 +63,12 @@
   padding: 44px 20px;
 }
 
-/* ================= LEFT ================= */
 
 .hero__left {
   color: var(--light);
   max-width: 600px;
 }
 
-/* pill */
 .hero__pill {
   display: inline-flex;
   align-items: center;
@@ -91,7 +85,6 @@
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
 }
 
-/* title */
 .hero__title {
   margin-top: 14px;
   color: rgba(245, 245, 245, 0.96);
@@ -110,7 +103,6 @@
   text-shadow: 0 8px 20px rgba(212, 175, 55, 0.15);
 }
 
-/* description */
 .hero__desc {
   margin-top: 14px;
   max-width: 520px;
@@ -120,7 +112,6 @@
   text-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
 }
 
-/* buttons */
 .hero__actions {
   display: flex;
   gap: 12px;
@@ -171,7 +162,6 @@
   color: var(--gold);
 }
 
-/* ================= RIGHT ================= */
 
 .hero__right {
   position: relative;
@@ -200,7 +190,6 @@
   transform: scale(1.1);
 }
 
-/* grid */
 .hero__grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -266,7 +255,6 @@
     0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
-/* ================= ANIMATION ================= */
 
 @keyframes fadeLeft {
   from { opacity: 0; transform: translateX(-20px); }
@@ -295,7 +283,6 @@
   animation: fadeRight 0.9s ease forwards;
 }
 
-/* ================= RESPONSIVE ================= */
 
 @media (max-width: 960px) {
   .hero__layout {

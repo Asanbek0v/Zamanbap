@@ -1,5 +1,6 @@
 import { FC } from "react";
 import "./Reviews.scss";
+
 const rewiews = [
   {
     id: 1,
@@ -22,19 +23,42 @@ const Reviews: FC = () => {
   return (
     <section id="Reviews">
       <div className="container">
-        <div className="Reviews">
+        {/* TOP */}
+        <div
+          className="Reviews"
+          data-aos="zoom-in"
+          data-aos-duration="900"
+          data-aos-once="true"
+        >
           <h2>Отзывы клиентов</h2>
           <p>Что говорят о Zamanbap Jewelry</p>
         </div>
+
+        {/* CARDS */}
         <div className="Reviews--head">
-          {rewiews.map((el) => (
-            <article className="Reviews--head__card" key={el.id}>
+          {rewiews.map((el, idx) => (
+            <article
+              className="Reviews--head__card"
+              key={el.id}
+              data-aos="zoom-in"
+              data-aos-delay={150 + idx * 140}
+              data-aos-duration="900"
+              data-aos-once="true"
+            >
               <p>{el.text}</p>
               <span>{el.name}</span>
             </article>
           ))}
         </div>
-        <div className="Reviews--blog">
+
+        {/* CTA */}
+        <div
+          className="Reviews--blog"
+          data-aos="zoom-in-up"
+          data-aos-delay="200"
+          data-aos-duration="900"
+          data-aos-once="true"
+        >
           <p>Присоединяйтесь к нашим клиентам</p>
           <a href="/catalog">Выбрать браслет</a>
         </div>

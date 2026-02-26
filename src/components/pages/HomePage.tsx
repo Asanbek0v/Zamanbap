@@ -5,6 +5,7 @@ import Faq from "./homeSections/Faq";
 import Process from "./homeSections/Process";
 import Hero from "./homeSections/Hero";
 import Popular from "./homeSections/Popular";
+import WhyZamanbap from "./homeSections/WhyZamanbap";
 
 const HomePage = () => {
   return (
@@ -15,6 +16,7 @@ const HomePage = () => {
       <Reviews />
       <Faq />
       <Process />
+      <WhyZamanbap />
     </div>
   );
 };

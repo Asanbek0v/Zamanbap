@@ -1,10 +1,10 @@
 import React from "react";
-import Reviews from "./reviewsSections/Reviews";
+import ReviewSection from "./reviewsSections/ReviewSection";
 
 const ReviewsPage = () => {
   return (
     <div>
-      <Reviews />
+      <ReviewSection />
     </div>
   );
 };
