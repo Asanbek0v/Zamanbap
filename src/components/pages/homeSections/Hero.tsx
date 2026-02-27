@@ -2,7 +2,7 @@
 
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import "./Hero.scss";
 
 import bg1 from "@/assets/1photohero.png";
@@ -23,8 +23,10 @@ type HeroItem = {
   title: string;
 };
 
+const AUTOPLAY_MS = 5200;
+
 export default function Hero() {
-  const items: HeroItem[] = useMemo(
+  const items = useMemo<HeroItem[]>(
     () => [
       { card: heroImg2, bg: bg1, title: "" },
       { card: heroImg1, bg: bg5, title: "" },
@@ -36,95 +38,192 @@ export default function Hero() {
   );
 
   const [active, setActive] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
-  useEffect(() => {
-    const id = window.setInterval(() => {
-      setActive((p) => (p + 1) % items.length);
-    }, 4500);
-    return () => window.clearInterval(id);
+  const timerRef = useRef<number | null>(null);
+
+  const goTo = useCallback(
+    (index: number) => {
+      setActive((prev) => {
+        const next = ((index % items.length) + items.length) % items.length;
+        return prev === next ? prev : next;
+      });
+    },
+    [items.length],
+  );
+
+  const next = useCallback(() => {
+    setActive((p) => (p + 1) % items.length);
   }, [items.length]);
 
+  const prev = useCallback(() => {
+    setActive((p) => (p - 1 + items.length) % items.length);
+  }, [items.length]);
+
+  // autoplay + respect reduced motion
+  useEffect(() => {
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+
+    if (prefersReduced || isPaused) return;
+
+    timerRef.current = window.setInterval(next, AUTOPLAY_MS);
+
+    return () => {
+      if (timerRef.current) window.clearInterval(timerRef.current);
+      timerRef.current = null;
+    };
+  }, [isPaused, next]);
+
+  // keyboard support
+  const onKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLElement>) => {
+      if (e.key === "ArrowRight") next();
+      if (e.key === "ArrowLeft") prev();
+    },
+    [next, prev],
+  );
+
+  // WhatsApp CTA (конверсия)
+  const phone = "996555000992"; // <-- өзүңдүкүн кой
+  const message = encodeURIComponent(
+    "Здравствуйте! Хочу узнать цену и сроки. Интересует браслет/коллекция Zamanbap. Подскажите, пожалуйста.",
+  );
+  const waUrl = `https://wa.me/${phone}?text=${message}`;
+
+  const current = items[active];
+
   return (
-    <section id="hero" className="hero" aria-label="Главный блок">
-      {/* BG */}
-      <div className="hero__bg">
-        {items.map((it, idx) => (
-          <div
-            key={idx}
-            className={`hero__bg-slide ${active === idx ? "is-active" : ""}`}
-          >
-            <Image
-              src={it.bg}
-              alt=""
-              fill
-              priority={idx === 0}
-              sizes="100vw"
-              quality={90}
-              className="hero__bg-img"
-            />
-          </div>
-        ))}
+    <section
+      id="hero"
+      className="hero"
+      aria-label="Главный блок"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onFocusCapture={() => setIsPaused(true)}
+      onBlurCapture={() => setIsPaused(false)}
+      onKeyDown={onKeyDown}
+      tabIndex={-1}
+    >
+      {/* BG (only active, performance) */}
+      <div className="hero__bg" aria-hidden="true">
+        <Image
+          key={active}
+          src={current.bg}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          quality={90}
+          className="hero__bg-img"
+        />
         <div className="hero__bg-overlay" />
       </div>
 
       <div className="container hero__layout">
         {/* LEFT */}
-        <header className="hero__left heroPop heroPop--1">
-          <div className="hero__pill heroPop heroPop--2">ZAMANBAP Jewelry</div>
+        <header className="hero__left">
+          <div className="hero__pill">ZAMANBAP Jewelry</div>
 
-          <h1 className="hero__title heroPop heroPop--3">
+          <h1 className="hero__title">
             ZAMANBAP <span className="hero__title-accent">Коллекция</span>
           </h1>
 
-          <p className="hero__desc heroPop heroPop--4">
-            Премиальные украшения: орнамент, стиль и качество. Каждая коллекция
-            — со своим характером и историей.
+          <p className="hero__desc">
+            Премиальные украшения: орнамент, стиль и качество. Каждая коллекция —
+            со своим характером и историей.
           </p>
 
-          <div className="hero__actions heroPop heroPop--5">
-            <Link className="hero__btn hero__btn--gold" href="/catalog">
-              Каталог <span aria-hidden="true">›</span>
+          <div className="hero__actions">
+            <Link
+              className="hero__btn hero__btn--gold"
+              href={waUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Написать в WhatsApp <span aria-hidden="true">›</span>
             </Link>
-            <Link className="hero__btn hero__btn--ghost" href="/contact">
-              Контакты
+
+            <Link className="hero__btn hero__btn--ghost" href="/catalog">
+              Смотреть каталог
             </Link>
           </div>
+
+          <div className="hero__meta">
+            <span className="hero__badge">925 серебро / золото</span>
+            <span className="hero__badge">Ручная работа</span>
+            <span className="hero__badge">Упаковка в подарок</span>
+          </div>
+
+          {/* Optional: show current selection */}
+          {/* <div className="hero__current" aria-live="polite">
+            Сейчас: <span>{current.title}</span>
+          </div> */}
         </header>
 
         {/* RIGHT */}
-        <div className="hero__right heroPop heroPop--2">
-          <div className="hero__dots heroPop heroPop--3">
-            {items.map((_, i) => (
+        <div className="hero__right">
+          <div className="hero__top">
+            <div className="hero__dots" role="tablist" aria-label="Слайды">
+              {items.map((it, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  className={`hero__dot ${active === i ? "is-active" : ""}`}
+                  onClick={() => goTo(i)}
+                  aria-label={`Слайд ${i + 1}: ${it.title}`}
+                  aria-current={active === i ? "true" : "false"}
+                />
+              ))}
+            </div>
+
+            <div className="hero__nav">
               <button
-                key={i}
-                className={`hero__dot ${active === i ? "is-active" : ""}`}
-                onClick={() => setActive(i)}
-                aria-label={`Слайд ${i + 1}`}
-              />
-            ))}
+                type="button"
+                className="hero__navbtn"
+                onClick={prev}
+                aria-label="Предыдущий слайд"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                className="hero__navbtn"
+                onClick={next}
+                aria-label="Следующий слайд"
+              >
+                ›
+              </button>
+            </div>
           </div>
 
-          <div className="hero__grid">
+          <div className="hero__grid" aria-label="Коллекции">
             {items.map((it, idx) => (
               <button
                 key={idx}
-                className={`hero__tile heroPop heroPop--tile ${
-                  active === idx ? "is-active" : ""
-                }`}
-                style={{ animationDelay: `${180 + idx * 120}ms` }}
-                onClick={() => setActive(idx)}
-                aria-label={`Карточка ${idx + 1}`}
+                type="button"
+                className={`hero__tile ${active === idx ? "is-active" : ""}`}
+                onClick={() => goTo(idx)}
+                aria-label={`Открыть: ${it.title}`}
               >
                 <div className="hero__tile-media">
                   <Image
                     src={it.card}
-                    alt={it.title || `card-${idx + 1}`}
+                    alt={it.title}
                     fill
-                    sizes="(max-width: 900px) 44vw, 260px"
+                    sizes="(max-width: 960px) 44vw, 260px"
                     quality={90}
                     className="hero__tile-img"
                   />
                   <div className="hero__tile-shade" />
+
+                  {/* ACTIVE BADGE */}
+                  {/* {active === idx && (
+                    <span className="hero__active-badge">Сейчас</span>
+                  )} */}
+
+                  <div className="hero__tile-cta">Смотреть</div>
                 </div>
 
                 <div className="hero__tile-title">{it.title}</div>
