@@ -70,46 +70,62 @@ const ReviewSection: FC = () => {
   return (
     <section id="Reviews">
       <div className="container">
-        <div className="Reviews">
+        <div className="Reviews" data-aos="fade-up">
           <span>ГОЛОСА НАШИХ КЛИЕНТОВ</span>
-          <h2>Отзывы </h2>
-          <h3>
+
+          <h2 data-aos="fade-up" data-aos-delay="100">
+            Отзывы
+          </h2>
+
+          <h3 data-aos="fade-up" data-aos-delay="200">
             Каждое украшение несёт историю. Делитесь своей - нам важно <br />
             каждое мнение!
           </h3>
+
           <div className="Reviews__linet"></div>
-          <div className="Reviews__list">
+
+          <div
+            className="Reviews__list"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
             <h4>
               4.9 <br />
               <span>средняя оценка</span>
             </h4>
+
             <h4>
               847 <br />
               <span>отзывов</span>
             </h4>
+
             <h4>
               98% <br />
               <span>рекомендуют</span>
             </h4>
           </div>
+
           <div className="Reviews__linet"></div>
         </div>
-        <div className="Review">
+
+        <div className="Review" data-aos="zoom-in" data-aos-delay="200">
           <span>FEATURED</span>
 
           <div>★ ★ ★ ★ ★</div>
 
-          <p>
-            Кольцо из коллекции Altun превзошло все мои ожидания. Ювелирное
-            мастерство на высочайшем уровне — чувствуется каждая деталь. Это не
-            просто украшение, это искусство.
-          </p>
+          <p>Кольцо из коллекции Altun превзошло все мои ожидания...</p>
 
           <p>АЙГЕРИМ КАСЫМОВА – БИШКЕК</p>
         </div>
+
         <div className="ReviewsGrid">
-          {REVIEWS.slice(0, 6).map((item) => (
-            <div className="ReviewsGrid__Card" key={item.id}>
+          {REVIEWS.map((item, index) => (
+            <div
+              className="ReviewsGrid__Card"
+              key={item.id}
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+            >
               <div className="ReviewsGrid__Card--stars">
                 {"★ ".repeat(item.rating)}
               </div>
@@ -137,12 +153,19 @@ const ReviewSection: FC = () => {
             </div>
           ))}
         </div>
-        <div className="ReviewForm">
+
+        <div className="ReviewForm" data-aos="fade-up" data-aos-delay="200">
           <p>ПОДЕЛИТЕСЬ ОПЫТОМ</p>
+
           <h2>Оставить отзыв</h2>
+
           <h3>Ваше мнение помогает нам становиться лучше</h3>
 
-          <form className="ReviewForm__form">
+          <form
+            className="ReviewForm__form"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
             <div className="ReviewForm__form--grid">
               <label className="ReviewForm__form--grid__field">
                 <span>ВАШЕ ИМЯ</span>
@@ -161,12 +184,13 @@ const ReviewSection: FC = () => {
 
               <div className="ReviewForm__form--grid__full">
                 <span>ОЦЕНКА</span>
+
                 <div className="ReviewForm__form--grid__full--stars">
-                  <button>★</button>
-                  <button>★</button>
-                  <button>★</button>
-                  <button>★</button>
-                  <button>★</button>
+                  <button type="button">★</button>
+                  <button type="button">★</button>
+                  <button type="button">★</button>
+                  <button type="button">★</button>
+                  <button type="button">★</button>
                 </div>
               </div>
 
@@ -177,7 +201,7 @@ const ReviewSection: FC = () => {
             </div>
 
             <div className="ReviewForm__form--bottom">
-              <button>ОТПРАВИТЬ ОТЗЫВ</button>
+              <button type="button">ОТПРАВИТЬ ОТЗЫВ</button>
             </div>
           </form>
         </div>
