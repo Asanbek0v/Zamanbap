@@ -1,0 +1,478 @@
+:root {
+  --dark: #0f1115;
+  --light: #f5f5f5;
+  --gold: #d4af37;
+}
+
+#Contacts {
+  padding: 80px 0 90px;
+  background: var(--dark);
+
+  .Contacts {
+    text-align: center;
+    margin-bottom: 44px;
+    span {
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    h2 {
+      color: var(--light);
+      font-size: 44px;
+      font-weight: 800;
+      margin: 10px 0 10px;
+      letter-spacing: 0.6px;
+    }
+
+    p {
+      color: var(--light);
+      opacity: 0.35;
+      margin: 0 auto 18px;
+      line-height: 1.7;
+      font-size: 14px;
+      letter-spacing: 0.6px;
+    }
+
+    &__line {
+      width: 980px;
+      height: 1px;
+      margin: 0 auto;
+      background: rgba(245, 245, 245, 0.12);
+    }
+  }
+
+  .ContactsGrid {
+    display: grid;
+    grid-template-columns: 1.05fr 1.15fr;
+    gap: 26px;
+    align-items: start;
+    .ContactsInfo {
+      display: grid;
+      gap: 18px;
+      &__card {
+        border-radius: 18px;
+        padding: 28px;
+        border: 1px solid rgba(245, 245, 245, 0.1);
+        background: rgba(245, 245, 245, 0.03);
+
+        h3 {
+          color: var(--light);
+          font-size: 20px;
+          letter-spacing: 1px;
+          margin-bottom: 18px;
+        }
+        &--item {
+          display: grid;
+          gap: 8px;
+          padding: 14px 0;
+          border-top: 1px solid rgba(245, 245, 245, 0.08);
+
+          span {
+            color: var(--gold);
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+          }
+
+          a,
+          p {
+            color: var(--light);
+            opacity: 0.9;
+            font-size: 14px;
+            letter-spacing: 0.4px;
+          }
+          a,
+          p {
+            transition: 0.2s;
+            &:hover {
+              color: var(--gold);
+            }
+          }
+        }
+        &--social {
+          margin-top: 12px;
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+          a {
+            color: var(--light);
+            opacity: 0.75;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid rgba(245, 245, 245, 0.12);
+            padding: 10px 14px;
+            border-radius: 100px;
+            transition: 0.25s;
+
+            &:hover {
+              border-color: var(--gold);
+              color: var(--gold);
+              opacity: 1;
+            }
+          }
+        }
+      }
+
+      &__mini {
+        border-radius: 18px;
+        padding: 22px 24px;
+        border: 1px solid var(--gold);
+        background: rgba(212, 175, 55, 0.06);
+        h4 {
+          color: var(--light);
+          font-size: 14px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          margin-bottom: 12px;
+          opacity: 0.9;
+        }
+        &--miniBtns {
+          display: flex;
+          gap: 10px;
+
+          a {
+            flex: 1;
+            text-align: center;
+            border-radius: 100px;
+            padding: 12px 14px;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: 0.25s;
+            border: 1px solid rgba(245, 245, 245, 0.12);
+            color: var(--light);
+            opacity: 0.9;
+
+            &:hover {
+              border-color: var(--gold);
+              color: var(--gold);
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+    &__Form {
+      border-radius: 18px;
+      padding: 28px;
+      border: 1px solid rgba(245, 245, 245, 0.1);
+      background: rgba(245, 245, 245, 0.03);
+
+      &--top {
+        span {
+          color: var(--gold);
+          font-size: 10px;
+          letter-spacing: 4px;
+          text-transform: uppercase;
+        }
+
+        h3 {
+          color: var(--light);
+          font-size: 26px;
+          margin: 10px 0 8px;
+          letter-spacing: 0.6px;
+        }
+
+        p {
+          color: var(--light);
+          opacity: 0.35;
+          font-size: 14px;
+          line-height: 1.7;
+          margin-bottom: 18px;
+        }
+      }
+
+      &--form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px 18px;
+        margin-top: 6px;
+        &__field {
+          span {
+            display: block;
+            color: var(--gold);
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+          }
+
+          input,
+          textarea {
+            width: 100%;
+            background: transparent;
+            border: 0;
+            border-bottom: 1px solid rgba(245, 245, 245, 0.22);
+            padding: 12px 0;
+            color: var(--light);
+            outline: none;
+            transition: 0.2s;
+            font-size: 14px;
+          }
+
+          input::placeholder,
+          textarea::placeholder {
+            color: var(--light);
+            opacity: 0.3;
+          }
+
+          input:focus,
+          textarea:focus {
+            border-bottom-color: rgba(212, 175, 55, 0.75);
+          }
+
+          textarea {
+            min-height: 110px;
+            resize: vertical;
+          }
+        }
+        &__full {
+          grid-column: 1 / -1;
+          span {
+            display: block;
+            color: var(--gold);
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+          }
+
+          input,
+          textarea {
+            width: 100%;
+            background: transparent;
+            border: 0;
+            border-bottom: 1px solid rgba(245, 245, 245, 0.22);
+            padding: 12px 0;
+            color: var(--light);
+            outline: none;
+            transition: 0.2s;
+            font-size: 14px;
+          }
+
+          input::placeholder,
+          textarea::placeholder {
+            color: var(--light);
+            opacity: 0.3;
+          }
+
+          input:focus,
+          textarea:focus {
+            border-bottom-color: rgba(212, 175, 55, 0.75);
+          }
+
+          textarea {
+            min-height: 110px;
+            resize: vertical;
+          }
+        }
+      }
+
+      &--bottom {
+        grid-column: 1 / -1;
+        margin-top: 10px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(245, 245, 245, 0.1);
+        display: grid;
+        gap: 10px;
+
+        button {
+          width: fit-content;
+          justify-self: start;
+          background: transparent;
+          border: 1px solid var(--gold);
+          color: var(--gold);
+          padding: 14px 34px;
+          border-radius: 999px;
+          letter-spacing: 5px;
+          font-size: 12px;
+          text-transform: uppercase;
+          transition: 0.25s;
+          &:hover {
+            background: var(--gold);
+            color: var(--dark);
+          }
+        }
+        p {
+          color: var(--light);
+          opacity: 0.28;
+          font-size: 12px;
+          line-height: 1.6;
+        }
+      }
+    }
+  }
+
+  .ContactsMap {
+    margin-top: 26px;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(245, 245, 245, 0.1);
+    background: rgba(245, 245, 245, 0.03);
+
+    &__block {
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(245, 245, 245, 0.08);
+      h3 {
+        color: var(--light);
+        font-size: 16px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0.9;
+      }
+
+      span {
+        color: var(--gold);
+        font-size: 12px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        opacity: 0.95;
+      }
+    }
+
+    &__frame {
+      height: 350px;
+      border-radius: 16px;
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    }
+  }
+}
+
+// !!!!!!!!!!!!!!!!!!!!! Адаптация 
+@media (max-width: 1024px) {
+  #Contacts {
+    .Contacts {
+      &__line {
+        width: 100%;
+      }
+    }
+
+    .ContactsGrid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  #Contacts {
+    padding: 60px 0 70px;
+
+    .Contacts {
+      h2 {
+        font-size: 34px;
+      }
+      p {
+        font-size: 13px;
+      }
+      &__line {
+        width: 100%;
+      }
+    }
+
+    .ContactsGrid {
+      gap: 18px;
+
+      .ContactsInfo {
+        &__card {
+          padding: 22px;
+        }
+        &__mini {
+          padding: 18px;
+
+          &--miniBtns {
+            flex-direction: column;
+          }
+        }
+      }
+
+      &__Form {
+        padding: 22px;
+
+        &--top {
+          h3 {
+            font-size: 22px;
+          }
+        }
+
+        &--form {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+
+    .ContactsMap {
+      &__frame {
+        height: 280px;
+      }
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  #Contacts {
+    padding: 50px 0 60px;
+
+    .Contacts {
+      h2 {
+        font-size: 28px;
+      }
+      span {
+        letter-spacing: 1.6px;
+      }
+    }
+
+    .ContactsGrid {
+      .ContactsInfo {
+        &__card {
+          border-radius: 14px;
+        }
+        &__mini {
+          border-radius: 14px;
+
+          &--miniBtns {
+            a {
+              padding: 12px 10px;
+              font-size: 11px;
+              letter-spacing: 2px;
+            }
+          }
+        }
+      }
+
+      &__Form {
+        border-radius: 14px;
+
+        &--bottom {
+          button {
+            width: 100%;
+            justify-self: stretch;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    .ContactsMap {
+      border-radius: 14px;
+
+      &__block {
+        padding: 14px 16px;
+      }
+
+      &__frame {
+        height: 240px;
+      }
+    }
+  }
+}
