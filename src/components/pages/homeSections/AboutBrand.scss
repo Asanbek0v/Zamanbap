@@ -5,158 +5,14 @@
 }
 
 #AboutBrand {
+  position: relative;
   padding: 110px 0;
   background: var(--dark);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  position: relative;
   overflow: hidden;
-  .AboutBrand {
-    text-align: center;
-    margin-bottom: 42px;
-
-    h2 {
-      color: var(--light);
-      font-size: 38px;
-      font-weight: 500;
-      letter-spacing: 1px;
-    }
-
-    p {
-      margin-top: 10px;
-      color: rgba(245, 245, 245, 0.55);
-      line-height: 1.6;
-    }
-  }
-  .About__card {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 28px;
-    position: relative;
-    z-index: 1;
-    &--text {
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(255, 255, 255, 0.02);
-      padding: 26px;
-      position: relative;
-      p:first-child {
-        color: rgba(245, 245, 245, 0.55);
-        letter-spacing: 3px;
-        font-size: 12px;
-      }
-      p:nth-of-type(2) {
-        margin-top: 12px;
-        color: rgba(245, 245, 245, 0.55);
-        line-height: 1.75;
-      }
-      h3 {
-        margin-top: 12px;
-        color: var(--light);
-        font-size: 30px;
-        font-weight: 500;
-        letter-spacing: 0.2px;
-      }
-      &__facts {
-        margin-top: 18px;
-        padding-top: 16px;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
-        &--fact {
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          background: rgba(255, 255, 255, 0.02);
-          padding: 14px;
-          transition: 0.35s;
-          h6 {
-            color: var(--gold);
-            font-weight: 600;
-            letter-spacing: 0.4px;
-          }
-          span {
-            display: block;
-            margin-top: 6px;
-            color: rgba(245, 245, 245, 0.55);
-            font-size: 12px;
-          }
-        }
-        &--fact:hover {
-          border-color: rgba(212, 175, 55, 0.35);
-          transform: translateY(-2px);
-        }
-      }
-      &__actions {
-        margin-top: 18px;
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-        .btn {
-          padding: 12px 22px;
-          background: var(--gold);
-          color: var(--dark);
-          text-decoration: none;
-          font-weight: 600;
-          letter-spacing: 0.4px;
-          position: relative;
-          overflow: hidden;
-        }
-        .btn::after {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(
-            120deg,
-            transparent,
-            rgba(245, 245, 245, 0.45),
-            transparent
-          );
-          opacity: 0;
-          transition: 0.35s;
-        }
-        .btn:hover::after {
-          opacity: 1;
-        }
-        .btn2 {
-          padding: 12px 22px;
-          border: 1px solid rgba(255, 255, 255, 0.16);
-          color: var(--light);
-          text-decoration: none;
-          background: transparent;
-          transition: 0.25s;
-        }
-
-        .btn2:hover {
-          border-color: var(--gold);
-          color: var(--gold);
-        }
-      }
-    }
-    &--cards {
-      display: grid;
-      gap: 14px;
-      &__block {
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background: rgba(255, 255, 255, 0.02);
-        padding: 18px;
-        transition: 0.35s;
-        h6 {
-          color: var(--light);
-          font-weight: 500;
-          letter-spacing: 0.3px;
-        }
-        p {
-          margin-top: 10px;
-          color: rgba(245, 245, 245, 0.55);
-          line-height: 1.7;
-        }
-      }
-      &__block:hover {
-        border-color: rgba(212, 175, 55, 0.35);
-        transform: translateY(-2px);
-      }
-    }
-  }
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* soft gold glow background */
 #AboutBrand::before {
   content: "";
   position: absolute;
@@ -164,27 +20,302 @@
   background:
     radial-gradient(
       circle at 20% 30%,
-      rgba(212, 175, 55, 0.08),
+      rgba(212, 175, 55, 0.1),
       transparent 55%
     ),
     radial-gradient(
       circle at 80% 70%,
-      rgba(212, 175, 55, 0.05),
+      rgba(212, 175, 55, 0.06),
       transparent 60%
     );
   pointer-events: none;
 }
 
+.AboutBrand__head {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-bottom: 44px;
+
+  h2 {
+    color: rgba(245, 245, 245, 0.96);
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 900;
+    letter-spacing: 0.6px;
+    margin: 0;
+  }
+
+  p {
+    margin-top: 10px;
+    color: rgba(245, 245, 245, 0.64);
+    line-height: 1.65;
+  }
+}
+
+.AboutBrand__grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 28px;
+}
+
+/* LEFT card (glass premium) */
+.AboutBrand__card {
+  border-radius: 22px;
+  padding: 28px;
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  background: rgba(245, 245, 245, 0.03);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.45);
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle gold light */
+.AboutBrand__card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  opacity: 0.8;
+  background: radial-gradient(
+    circle at 20% 10%,
+    rgba(212, 175, 55, 0.22) 0%,
+    rgba(212, 175, 55, 0.06) 28%,
+    rgba(212, 175, 55, 0) 60%
+  );
+}
+
+.AboutBrand__kicker {
+  margin: 0;
+  color: rgba(245, 245, 245, 0.62);
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: 800;
+  position: relative;
+  z-index: 1;
+}
+
+.AboutBrand__title {
+  margin-top: 12px;
+  margin-bottom: 0;
+  color: rgba(245, 245, 245, 0.98);
+  font-size: clamp(22px, 2.2vw, 32px);
+  font-weight: 900;
+  letter-spacing: 0.2px;
+  position: relative;
+  z-index: 1;
+}
+
+.AboutBrand__desc {
+  margin-top: 12px;
+  color: rgba(245, 245, 245, 0.74);
+  line-height: 1.75;
+  position: relative;
+  z-index: 1;
+}
+
+/* FACTS */
+.AboutBrand__facts {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.AboutBrand__fact {
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(245, 245, 245, 0.02);
+  padding: 14px;
+  transition: 0.28s ease;
+}
+
+.AboutBrand__factNum {
+  font-weight: 900;
+  letter-spacing: 0.3px;
+  font-size: 18px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 1) 0%,
+    rgba(255, 227, 141, 0.95) 50%,
+    rgba(212, 175, 55, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.AboutBrand__factText {
+  margin-top: 6px;
+  color: rgba(245, 245, 245, 0.62);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.AboutBrand__fact:hover {
+  transform: translateY(-3px);
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
+}
+
+/* ACTIONS */
+.AboutBrand__actions {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.AboutBrand__btn {
+  height: 46px;
+  padding: 0 18px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: 900;
+  letter-spacing: 0.3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.28s ease;
+}
+
+.AboutBrand__btn--gold {
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 1) 0%,
+    rgba(255, 227, 141, 0.95) 50%,
+    rgba(212, 175, 55, 1) 100%
+  );
+  color: #0f1115;
+  box-shadow: 0 14px 34px rgba(212, 175, 55, 0.22);
+}
+
+.AboutBrand__btn--gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 55px rgba(212, 175, 55, 0.34);
+}
+
+.AboutBrand__btn--ghost {
+  background: rgba(245, 245, 245, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: rgba(245, 245, 245, 0.96);
+  backdrop-filter: blur(10px);
+}
+
+.AboutBrand__btn--ghost:hover {
+  transform: translateY(-2px);
+  border-color: rgba(212, 175, 55, 0.55);
+  color: var(--gold);
+}
+
+.AboutBrand__btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
+}
+
+/* RIGHT side */
+.AboutBrand__side {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.AboutBrand__sideGrid {
+  display: grid;
+  gap: 14px;
+}
+
+.AboutBrand__feature {
+  border-radius: 20px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(245, 245, 245, 0.02);
+  transition: 0.28s ease;
+}
+
+.AboutBrand__feature h6 {
+  margin: 0;
+  color: rgba(245, 245, 245, 0.96);
+  font-weight: 900;
+  letter-spacing: 0.2px;
+  font-size: 15px;
+}
+
+.AboutBrand__feature p {
+  margin-top: 10px;
+  color: rgba(245, 245, 245, 0.62);
+  line-height: 1.7;
+}
+
+.AboutBrand__feature:hover {
+  transform: translateY(-3px);
+  border-color: rgba(212, 175, 55, 0.35);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.42);
+}
+
+/* mini CTA */
+.AboutBrand__miniCta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  background: rgba(245, 245, 245, 0.03);
+}
+
+.AboutBrand__miniCta span {
+  color: rgba(245, 245, 245, 0.7);
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.AboutBrand__miniCta a {
+  text-decoration: none;
+  font-weight: 900;
+  color: rgba(255, 227, 141, 0.95);
+  transition: 0.25s ease;
+}
+
+.AboutBrand__miniCta a:hover {
+  color: var(--gold);
+}
+
+/* Responsive */
 @media (max-width: 900px) {
-  .About__card {
+  .AboutBrand__grid {
     grid-template-columns: 1fr;
   }
 
-  .About__card--text__facts {
+  .AboutBrand__facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .AboutBrand__facts {
     grid-template-columns: 1fr;
   }
 
-  .AboutBrand h2 {
-    font-size: 32px;
+  .AboutBrand__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .AboutBrand__btn {
+    width: 100%;
+  }
+
+  .AboutBrand__card {
+    padding: 22px;
   }
 }
