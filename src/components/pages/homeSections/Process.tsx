@@ -108,19 +108,11 @@ const ProcessVideo: FC = () => {
               {step.id}
             </span>
 
-            <h3
-              data-aos="zoom-in"
-              data-aos-delay="300"
-              data-aos-duration="800"
-            >
+            <h3 data-aos="zoom-in" data-aos-delay="300" data-aos-duration="800">
               {step.title}
             </h3>
 
-            <p
-              data-aos="zoom-in"
-              data-aos-delay="380"
-              data-aos-duration="800"
-            >
+            <p data-aos="zoom-in" data-aos-delay="380" data-aos-duration="800">
               {step.text}
             </p>
 

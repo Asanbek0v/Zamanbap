@@ -191,6 +191,19 @@
         grid-template-columns: 1fr 1fr;
         gap: 18px 18px;
         margin-top: 6px;
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        textarea:-webkit-autofill,
+        textarea:-webkit-autofill:hover,
+        textarea:-webkit-autofill:focus {
+          -webkit-text-fill-color: var(--light);
+          transition: background-color 9999s ease-in-out 0s;
+          box-shadow: 0 0 0px 1000px transparent inset;
+          border-bottom: 1px solid rgba(245, 245, 245, 0.22);
+        }
+
         &__field {
           span {
             display: block;
@@ -222,7 +235,7 @@
 
           input:focus,
           textarea:focus {
-            border-bottom-color: rgba(212, 175, 55, 0.75);
+            border-bottom-color: var(--gold);
           }
 
           textarea {
@@ -230,8 +243,10 @@
             resize: vertical;
           }
         }
+
         &__full {
           grid-column: 1 / -1;
+
           span {
             display: block;
             color: var(--gold);
@@ -262,7 +277,7 @@
 
           input:focus,
           textarea:focus {
-            border-bottom-color: rgba(212, 175, 55, 0.75);
+            border-bottom-color: var(--gold);
           }
 
           textarea {
@@ -281,7 +296,6 @@
         gap: 10px;
 
         button {
-          width: fit-content;
           justify-self: start;
           background: transparent;
           border: 1px solid var(--gold);
@@ -308,48 +322,113 @@
   }
 
   .ContactsMap {
-    margin-top: 26px;
-    border-radius: 18px;
+    margin-top: 40px;
+    border-radius: 22px;
     overflow: hidden;
-    border: 1px solid rgba(245, 245, 245, 0.1);
-    background: rgba(245, 245, 245, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.04),
+      rgba(255, 255, 255, 0.02)
+    );
+    backdrop-filter: blur(12px);
+    transition: 0.4s ease;
+
+    &:hover {
+      border-color: var(--gold);
+      box-shadow: 0 0 35px rgba(212, 175, 55, 0.08);
+    }
 
     &__block {
-      padding: 18px 22px;
+      padding: 22px 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid rgba(245, 245, 245, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       h3 {
         color: var(--light);
-        font-size: 16px;
-        letter-spacing: 2px;
+        font-size: 17px;
+        letter-spacing: 3px;
         text-transform: uppercase;
-        opacity: 0.9;
+        font-weight: 500;
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -6px;
+          width: 40px;
+          height: 2px;
+          background: var(--gold);
+        }
       }
 
       span {
         color: var(--gold);
         font-size: 12px;
-        letter-spacing: 3px;
+        letter-spacing: 4px;
         text-transform: uppercase;
-        opacity: 0.95;
+        font-weight: 600;
       }
     }
 
     &__frame {
-      height: 350px;
-      border-radius: 16px;
+      height: 380px;
+      position: relative;
+
       iframe {
         width: 100%;
         height: 100%;
         border: none;
+        filter: grayscale(0.2) contrast(1.05);
+        transition: 0.5s ease;
+      }
+
+      &:hover iframe {
+        filter: grayscale(0) contrast(1.1);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.2),
+          rgba(0, 0, 0, 0.4)
+        );
+        pointer-events: none;
+      }
+    }
+    &__buttons {
+      display: flex;
+      justify-content: center;
+      padding: 22px;
+      background: rgba(255, 255, 255, 0.02);
+
+      a {
+        padding: 12px 28px;
+        border-radius: 30px;
+        border: 1px solid var(--gold);
+        color: var(--gold);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 12px;
+        transition: 0.3s ease;
+        text-decoration: none;
+
+        &:hover {
+          background: var(--gold);
+          color: #000;
+          box-shadow: 0 0 10px var(--gold);
+          transform: translateY(-2px);
+        }
       }
     }
   }
 }
 
-// !!!!!!!!!!!!!!!!!!!!! Адаптация 
+// !!!!!!!!!!!!!!!!!!!!! Адаптация
 @media (max-width: 1024px) {
   #Contacts {
     .Contacts {

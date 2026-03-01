@@ -23,7 +23,7 @@ const Header: FC = () => {
 
   const phone = "996555000992";
   const message = encodeURIComponent(
-    "Здравствуйте! Хочу узнать подробнее о браслетах Zamanbap."
+    "Здравствуйте! Хочу узнать подробнее о браслетах Zamanbap.",
   );
   const waUrl = `https://wa.me/${phone}?text=${message}`;
 

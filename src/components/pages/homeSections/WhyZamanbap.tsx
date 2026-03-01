@@ -28,7 +28,6 @@ const WhyZamanbap = () => {
     <section id="whyZamanbap">
       <div className="container">
         <div className="why">
-          {/* TOP */}
           <div
             className="why__top"
             data-aos="zoom-in"
@@ -39,7 +38,6 @@ const WhyZamanbap = () => {
             <p>Мы создаем украшения с характером</p>
           </div>
 
-          {/* GRID */}
           <div className="why__grid">
             {items.map((item, index) => (
               <div
