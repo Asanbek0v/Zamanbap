@@ -1,5 +1,7 @@
 #companyPhilosophy {
   padding: 90px 0;
+  overflow-x: clip;
+
   .companyPhilosophy {
     display: flex;
     flex-direction: column;
@@ -12,10 +14,11 @@
   display: grid;
   align-items: center;
   gap: 30px;
+  min-width: 0;
 }
 
 .cpRow--right {
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
 
   .cpCard {
     position: absolute;
@@ -26,7 +29,7 @@
 }
 
 .cpRow--left {
-  grid-template-columns: 0.8fr 1.2fr;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
 
   .cpMedia {
     grid-column: 2 / 3;
@@ -74,10 +77,21 @@
     line-height: 1.55;
     color: #4a4a4a;
     max-width: 56ch;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 }
 
+/* ✅ Tablet */
 @media (max-width: 1000px) {
+  #companyPhilosophy {
+    padding: 80px 0;
+
+    .companyPhilosophy {
+      gap: 60px;
+    }
+  }
+
   .cpRow--right,
   .cpRow--left {
     grid-template-columns: 1fr;
@@ -91,7 +105,7 @@
       transform: none;
       width: 100%;
       max-width: 100%;
-      margin-top: -26px; 
+      margin-top: -26px;
     }
   }
 
@@ -100,24 +114,59 @@
   }
 }
 
+/* ✅ Phone */
 @media (max-width: 560px) {
   #companyPhilosophy {
-    padding: 70px 0;
+    padding: 60px 0;
+
+    .companyPhilosophy {
+      gap: 42px;
+    }
+  }
+
+  .cpRow {
+    gap: 16px;
+  }
+
+  .cpMedia {
+    border-radius: 20px;
+
+    img {
+      height: 240px;
+    }
   }
 
   .cpCard {
-    padding: 24px 22px;
+    border-radius: 18px;
+    padding: 20px 18px;
+    margin-top: -18px;
 
     h3 {
-      font-size: 22px;
+      font-size: 20px;
+      margin-bottom: 10px;
     }
 
     p {
-      font-size: 15.5px;
+      font-size: 15px;
+      line-height: 1.65;
+      max-width: 100%;
     }
   }
+}
 
+/* ✅ Small phones */
+@media (max-width: 375px) {
   .cpMedia img {
-    height: 260px;
+    height: 220px;
+  }
+  .cpCard {
+    padding: 18px 16px;
+
+    h3 {
+      font-size: 19px;
+    }
+    p {
+      font-size: 14px;
+    }
   }
 }

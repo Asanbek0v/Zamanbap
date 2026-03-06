@@ -14,7 +14,7 @@ type CatalogItem = {
   title: string;
   badge: string;
   desc: string;
-  img: any; 
+  img: any;
 };
 
 const Catalog = () => {

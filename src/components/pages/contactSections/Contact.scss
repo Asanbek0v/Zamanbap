@@ -7,16 +7,24 @@
 #Contacts {
   padding: 80px 0 90px;
   background: var(--dark);
+  overflow: hidden;
+
+  * {
+    min-width: 0;
+  }
 
   .Contacts {
     text-align: center;
     margin-bottom: 44px;
+    width: 100%;
+
     span {
       color: var(--gold);
       font-size: 10px;
       letter-spacing: 2px;
       text-transform: uppercase;
       font-weight: 500;
+      display: inline-block;
     }
 
     h2 {
@@ -25,6 +33,7 @@
       font-weight: 800;
       margin: 10px 0 10px;
       letter-spacing: 0.6px;
+      word-break: break-word;
     }
 
     p {
@@ -34,10 +43,13 @@
       line-height: 1.7;
       font-size: 14px;
       letter-spacing: 0.6px;
+      max-width: 720px;
+      word-break: break-word;
     }
 
     &__line {
-      width: 980px;
+      width: 100%;
+      max-width: 980px;
       height: 1px;
       margin: 0 auto;
       background: rgba(245, 245, 245, 0.12);
@@ -49,21 +61,28 @@
     grid-template-columns: 1.05fr 1.15fr;
     gap: 26px;
     align-items: start;
+    width: 100%;
+
     .ContactsInfo {
       display: grid;
       gap: 18px;
+      width: 100%;
+
       &__card {
         border-radius: 18px;
         padding: 28px;
         border: 1px solid rgba(245, 245, 245, 0.1);
         background: rgba(245, 245, 245, 0.03);
+        width: 100%;
 
         h3 {
           color: var(--light);
           font-size: 20px;
           letter-spacing: 1px;
           margin-bottom: 18px;
+          word-break: break-word;
         }
+
         &--item {
           display: grid;
           gap: 8px;
@@ -75,6 +94,7 @@
             font-size: 11px;
             letter-spacing: 4px;
             text-transform: uppercase;
+            display: block;
           }
 
           a,
@@ -83,20 +103,26 @@
             opacity: 0.9;
             font-size: 14px;
             letter-spacing: 0.4px;
+            word-break: break-word;
           }
+
           a,
           p {
             transition: 0.2s;
-            &:hover {
-              color: var(--gold);
-            }
+          }
+
+          a:hover,
+          p:hover {
+            color: var(--gold);
           }
         }
+
         &--social {
           margin-top: 12px;
           display: flex;
           gap: 10px;
           flex-wrap: wrap;
+
           a {
             color: var(--light);
             opacity: 0.75;
@@ -107,6 +133,8 @@
             padding: 10px 14px;
             border-radius: 100px;
             transition: 0.25s;
+            text-align: center;
+            word-break: break-word;
 
             &:hover {
               border-color: var(--gold);
@@ -122,6 +150,8 @@
         padding: 22px 24px;
         border: 1px solid var(--gold);
         background: rgba(212, 175, 55, 0.06);
+        width: 100%;
+
         h4 {
           color: var(--light);
           font-size: 14px;
@@ -129,10 +159,13 @@
           text-transform: uppercase;
           margin-bottom: 12px;
           opacity: 0.9;
+          word-break: break-word;
         }
+
         &--miniBtns {
           display: flex;
           gap: 10px;
+          width: 100%;
 
           a {
             flex: 1;
@@ -156,11 +189,13 @@
         }
       }
     }
+
     &__Form {
       border-radius: 18px;
       padding: 28px;
       border: 1px solid rgba(245, 245, 245, 0.1);
       background: rgba(245, 245, 245, 0.03);
+      width: 100%;
 
       &--top {
         span {
@@ -168,6 +203,7 @@
           font-size: 10px;
           letter-spacing: 4px;
           text-transform: uppercase;
+          display: inline-block;
         }
 
         h3 {
@@ -175,6 +211,7 @@
           font-size: 26px;
           margin: 10px 0 8px;
           letter-spacing: 0.6px;
+          word-break: break-word;
         }
 
         p {
@@ -183,14 +220,16 @@
           font-size: 14px;
           line-height: 1.7;
           margin-bottom: 18px;
+          word-break: break-word;
         }
       }
 
       &--form {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 18px 18px;
+        gap: 18px;
         margin-top: 6px;
+        width: 100%;
 
         input:-webkit-autofill,
         input:-webkit-autofill:hover,
@@ -204,7 +243,10 @@
           border-bottom: 1px solid rgba(245, 245, 245, 0.22);
         }
 
-        &__field {
+        &__field,
+        &__full {
+          width: 100%;
+
           span {
             display: block;
             color: var(--gold);
@@ -212,11 +254,13 @@
             letter-spacing: 4px;
             text-transform: uppercase;
             margin-bottom: 10px;
+            word-break: break-word;
           }
 
           input,
           textarea {
             width: 100%;
+            max-width: 100%;
             background: transparent;
             border: 0;
             border-bottom: 1px solid rgba(245, 245, 245, 0.22);
@@ -225,6 +269,7 @@
             outline: none;
             transition: 0.2s;
             font-size: 14px;
+            border-radius: 0;
           }
 
           input::placeholder,
@@ -246,44 +291,6 @@
 
         &__full {
           grid-column: 1 / -1;
-
-          span {
-            display: block;
-            color: var(--gold);
-            font-size: 11px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-          }
-
-          input,
-          textarea {
-            width: 100%;
-            background: transparent;
-            border: 0;
-            border-bottom: 1px solid rgba(245, 245, 245, 0.22);
-            padding: 12px 0;
-            color: var(--light);
-            outline: none;
-            transition: 0.2s;
-            font-size: 14px;
-          }
-
-          input::placeholder,
-          textarea::placeholder {
-            color: var(--light);
-            opacity: 0.3;
-          }
-
-          input:focus,
-          textarea:focus {
-            border-bottom-color: var(--gold);
-          }
-
-          textarea {
-            min-height: 110px;
-            resize: vertical;
-          }
         }
       }
 
@@ -294,6 +301,7 @@
         border-top: 1px solid rgba(245, 245, 245, 0.1);
         display: grid;
         gap: 10px;
+        width: 100%;
 
         button {
           justify-self: start;
@@ -306,16 +314,20 @@
           font-size: 12px;
           text-transform: uppercase;
           transition: 0.25s;
+          cursor: pointer;
+
           &:hover {
             background: var(--gold);
             color: var(--dark);
           }
         }
+
         p {
           color: var(--light);
           opacity: 0.28;
           font-size: 12px;
           line-height: 1.6;
+          word-break: break-word;
         }
       }
     }
@@ -333,6 +345,7 @@
     );
     backdrop-filter: blur(12px);
     transition: 0.4s ease;
+    width: 100%;
 
     &:hover {
       border-color: var(--gold);
@@ -344,7 +357,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 16px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
       h3 {
         color: var(--light);
         font-size: 17px;
@@ -352,6 +367,8 @@
         text-transform: uppercase;
         font-weight: 500;
         position: relative;
+        word-break: break-word;
+
         &::after {
           content: "";
           position: absolute;
@@ -369,12 +386,14 @@
         letter-spacing: 4px;
         text-transform: uppercase;
         font-weight: 600;
+        word-break: break-word;
       }
     }
 
     &__frame {
       height: 380px;
       position: relative;
+      width: 100%;
 
       iframe {
         width: 100%;
@@ -382,6 +401,7 @@
         border: none;
         filter: grayscale(0.2) contrast(1.05);
         transition: 0.5s ease;
+        display: block;
       }
 
       &:hover iframe {
@@ -400,6 +420,7 @@
         pointer-events: none;
       }
     }
+
     &__buttons {
       display: flex;
       justify-content: center;
@@ -416,6 +437,7 @@
         font-size: 12px;
         transition: 0.3s ease;
         text-decoration: none;
+        text-align: center;
 
         &:hover {
           background: var(--gold);
@@ -428,7 +450,8 @@
   }
 }
 
-// !!!!!!!!!!!!!!!!!!!!! Адаптация
+/* ADAPTATION */
+
 @media (max-width: 1024px) {
   #Contacts {
     .Contacts {
@@ -448,12 +471,16 @@
     padding: 60px 0 70px;
 
     .Contacts {
+      margin-bottom: 32px;
+
       h2 {
         font-size: 34px;
       }
+
       p {
         font-size: 13px;
       }
+
       &__line {
         width: 100%;
       }
@@ -466,6 +493,7 @@
         &__card {
           padding: 22px;
         }
+
         &__mini {
           padding: 18px;
 
@@ -491,6 +519,20 @@
     }
 
     .ContactsMap {
+      &__block {
+        padding: 18px 20px;
+
+        h3 {
+          font-size: 15px;
+          letter-spacing: 2px;
+        }
+
+        span {
+          font-size: 11px;
+          letter-spacing: 2px;
+        }
+      }
+
       &__frame {
         height: 280px;
       }
@@ -506,6 +548,7 @@
       h2 {
         font-size: 28px;
       }
+
       span {
         letter-spacing: 1.6px;
       }
@@ -515,7 +558,21 @@
       .ContactsInfo {
         &__card {
           border-radius: 14px;
+          padding: 18px;
+
+          &--item {
+            span {
+              letter-spacing: 2px;
+            }
+          }
+
+          &--social {
+            a {
+              width: 100%;
+            }
+          }
         }
+
         &__mini {
           border-radius: 14px;
 
@@ -531,12 +588,36 @@
 
       &__Form {
         border-radius: 14px;
+        padding: 18px;
+
+        &--top {
+          span {
+            letter-spacing: 2px;
+          }
+        }
+
+        &--form {
+          gap: 16px;
+
+          &__field,
+          &__full {
+            span {
+              letter-spacing: 2px;
+            }
+
+            input,
+            textarea {
+              font-size: 14px;
+            }
+          }
+        }
 
         &--bottom {
           button {
             width: 100%;
             justify-self: stretch;
             text-align: center;
+            letter-spacing: 3px;
           }
         }
       }
@@ -547,10 +628,20 @@
 
       &__block {
         padding: 14px 16px;
+        flex-direction: column;
+        align-items: flex-start;
       }
 
       &__frame {
         height: 240px;
+      }
+
+      &__buttons {
+        padding: 16px;
+
+        a {
+          width: 100%;
+        }
       }
     }
   }

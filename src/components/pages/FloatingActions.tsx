@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { FaWhatsapp, FaRegCommentDots } from "react-icons/fa";
 import { FiMenu, FiX } from "react-icons/fi";
-import "./FloatingActions.scss";
 import Link from "next/link";
+import "./FloatingActions.scss";
 
 export default function FloatingActions() {
   const [open, setOpen] = useState(false);
@@ -49,7 +49,12 @@ export default function FloatingActions() {
           <FaWhatsapp />
         </a>
 
-        <Link className="fab__btn fab__btn--msg" href="/contact" title="Оставить заявку">
+        <Link
+          className="fab__btn fab__btn--msg"
+          href="/contact"
+          title="Оставить заявку"
+          onClick={() => setOpen(false)}
+        >
           <FaRegCommentDots />
         </Link>
       </div>
