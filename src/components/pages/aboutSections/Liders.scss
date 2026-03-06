@@ -1,12 +1,14 @@
 #liders {
   padding: 100px 0;
   background: #0f1115;
+  overflow-x: clip;
 }
 
 .liders {
   display: flex;
   flex-direction: column;
   align-items: start;
+
   &__top {
     margin-bottom: 60px;
 
@@ -25,12 +27,13 @@
   }
 
   &__grid {
+    width: 100%;
     display: flex;
     justify-content: center;
   }
 
   &__card {
-    max-width: 360px;
+    width: min(420px, 100%);
     text-align: center;
 
     h3 {
@@ -39,6 +42,9 @@
       margin-top: 22px;
       margin-bottom: 10px;
       color: #fff;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     span {
@@ -53,19 +59,56 @@
     margin: 0 auto;
     border-radius: 50%;
     overflow: hidden;
-
     position: relative;
-
     background: #ddd;
   }
 }
 
+/* ✅ Tablet */
 @media (max-width: 768px) {
-  .liders__image {
-    width: 220px;
-    height: 220px;
+  #liders {
+    padding: 80px 0;
   }
-  .liders__top h2 {
-    font-size: 30px;
+
+  .liders {
+    align-items: center;
+    text-align: center;
+
+    &__top {
+      margin-bottom: 36px;
+
+      h2 {
+        font-size: 30px;
+      }
+
+      p {
+        font-size: 16px;
+
+        br {
+          display: none;
+        }
+      }
+    }
+
+    &__image {
+      width: 220px;
+      height: 220px;
+    }
+  }
+}
+
+/* ✅ Phone */
+@media (max-width: 420px) {
+  .liders__image {
+    width: 190px;
+    height: 190px;
+  }
+
+  .liders__card h3 {
+    font-size: 17px;
+  }
+
+  .liders__card span {
+    font-size: 14px;
   }
 }

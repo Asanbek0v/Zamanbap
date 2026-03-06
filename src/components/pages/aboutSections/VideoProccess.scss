@@ -1,17 +1,13 @@
 #video {
   padding: 120px 0;
   background: #0f1115;
+  overflow-x: clip;
 
   .video {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 60px;
-
-    @media (max-width: 900px) {
-      flex-direction: column;
-      text-align: center;
-    }
 
     &__content {
       max-width: 550px;
@@ -33,12 +29,17 @@
         color: #ccc;
         line-height: 1.6;
         font-size: 20px;
+        overflow-wrap: anywhere;
+        word-break: break-word;
       }
     }
 
     &__card {
       position: relative;
+
+      /* ✅ десктопто мурунку өлчөм */
       width: 360px;
+
       border-radius: 20px;
       overflow: hidden;
       background: #000;
@@ -70,6 +71,62 @@
         &:hover {
           transform: scale(1.1);
         }
+      }
+    }
+  }
+}
+
+/* ✅ Tablet */
+@media (max-width: 900px) {
+  #video {
+    padding: 90px 0;
+
+    .video {
+      flex-direction: column;
+      text-align: center;
+      gap: 26px;
+
+      &__content {
+        max-width: 650px;
+
+        h2 {
+          font-size: 30px;
+        }
+
+        p {
+          font-size: 16px;
+        }
+      }
+
+      /* ✅ мобилкада card толук кеңдик */
+      &__card {
+        width: min(380px, 100%);
+      }
+    }
+  }
+}
+
+/* ✅ Phone */
+@media (max-width: 420px) {
+  #video {
+    padding: 70px 0;
+
+    .video__content h2 {
+      font-size: 26px;
+      margin-bottom: 14px;
+    }
+
+    .video__content p {
+      font-size: 15px;
+    }
+
+    .video__card {
+      width: 100%;
+
+      .playButton {
+        width: 68px;
+        height: 68px;
+        font-size: 24px;
       }
     }
   }

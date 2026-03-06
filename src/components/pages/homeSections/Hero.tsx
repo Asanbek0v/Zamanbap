@@ -2,7 +2,7 @@
 
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import "./Hero.scss";
 
 import bg1 from "@/assets/1photohero.png";
@@ -28,25 +28,24 @@ const AUTOPLAY_MS = 5200;
 export default function Hero() {
   const items = useMemo<HeroItem[]>(
     () => [
-      { card: heroImg2, bg: bg1, title: "" },
-      { card: heroImg1, bg: bg5, title: "" },
-      { card: heroImg4, bg: bg2, title: "" },
-      { card: heroPhoto3, bg: bg3, title: "" },
-      { card: heroPhoto5, bg: bg4, title: "" },
+      { card: heroImg2, bg: bg1, title: "" }, // 1
+      { card: heroImg1, bg: bg5, title: "" }, // 2
+      { card: heroImg4, bg: bg2, title: "" }, // 3
+      { card: heroPhoto3, bg: bg3, title: "" }, // 4
+      { card: heroPhoto5, bg: bg4, title: "" }, // 5
     ],
     [],
   );
 
   const [active, setActive] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-
   const timerRef = useRef<number | null>(null);
 
   const goTo = useCallback(
     (index: number) => {
-      setActive((prev) => {
+      setActive(() => {
         const next = ((index % items.length) + items.length) % items.length;
-        return prev === next ? prev : next;
+        return next;
       });
     },
     [items.length],
@@ -60,7 +59,7 @@ export default function Hero() {
     setActive((p) => (p - 1 + items.length) % items.length);
   }, [items.length]);
 
-  // autoplay + respect reduced motion
+  // autoplay (optional)
   useEffect(() => {
     const prefersReduced =
       typeof window !== "undefined" &&
@@ -85,8 +84,8 @@ export default function Hero() {
     [next, prev],
   );
 
-  // WhatsApp CTA (конверсия)
-  const phone = "996555000992"; // <-- өзүңдүкүн кой
+  // WhatsApp CTA
+  const phone = "996555000992";
   const message = encodeURIComponent(
     "Здравствуйте! Хочу узнать цену и сроки. Интересует браслет/коллекция Zamanbap. Подскажите, пожалуйста.",
   );
@@ -106,10 +105,10 @@ export default function Hero() {
       onKeyDown={onKeyDown}
       tabIndex={-1}
     >
-      {/* BG (only active, performance) */}
+      {/* BG */}
       <div className="hero__bg" aria-hidden="true">
         <Image
-          key={active}
+          key={`bg-${active}`}
           src={current.bg}
           alt=""
           fill
@@ -155,15 +154,11 @@ export default function Hero() {
             <span className="hero__badge">Ручная работа</span>
             <span className="hero__badge">Упаковка в подарок</span>
           </div>
-
-          {/* Optional: show current selection */}
-          {/* <div className="hero__current" aria-live="polite">
-            Сейчас: <span>{current.title}</span>
-          </div> */}
         </header>
 
         {/* RIGHT */}
         <div className="hero__right">
+          {/* TOP controls */}
           <div className="hero__top">
             <div className="hero__dots" role="tablist" aria-label="Слайды">
               {items.map((it, i) => (
@@ -198,7 +193,24 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="hero__grid" aria-label="Коллекции">
+          {/* ✅ MOBILE: one big carousel image (shows only on phone via CSS) */}
+          <div className="hero__mobileCard" aria-label="Слайд (мобилка)">
+            <div className="hero__mobileMedia">
+              <Image
+                key={`card-${active}`}
+                src={current.card}
+                alt={current.title}
+                fill
+                sizes="100vw"
+                quality={92}
+                className="hero__mobileImg"
+              />
+              <div className="hero__mobileShade" />
+            </div>
+          </div>
+
+          {/* DESKTOP: grid (hides on phone via CSS) */}
+          <div className="hero__grid" aria-label="Коллекции (десктоп)">
             {items.map((it, idx) => (
               <button
                 key={idx}
@@ -217,15 +229,8 @@ export default function Hero() {
                     className="hero__tile-img"
                   />
                   <div className="hero__tile-shade" />
-
-                  {/* ACTIVE BADGE */}
-                  {/* {active === idx && (
-                    <span className="hero__active-badge">Сейчас</span>
-                  )} */}
-
                   <div className="hero__tile-cta">Смотреть</div>
                 </div>
-
                 <div className="hero__tile-title">{it.title}</div>
               </button>
             ))}
