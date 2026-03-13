@@ -18,7 +18,11 @@ const Liders = () => {
           </div>
 
           <div className="liders__grid">
-            <div className="liders__card" data-aos="zoom-in" data-aos-delay="150">
+            <div
+              className="liders__card"
+              data-aos="zoom-in"
+              data-aos-delay="150"
+            >
               <div className="liders__image">
                 <Image
                   src={lider1}
